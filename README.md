@@ -5,9 +5,10 @@ Lin](https://github.com/IntOwl).
 
 ## Data
 
-Data for this analysis is available from the ____ external data archive. See the
-data specific [data-readme](data/README.md) for specific information on how to 
-extract the data into your working directory.
+Data for this analysis is available in an external data archive at
+[https://doi.org/10.6084/m9.figshare.13116740](https://doi.org/10.6084/m9.figshare.13116740).
+See the data specific [data-readme](data/README.md) for specific information on
+how to extract the data into your working directory.
 
 Some analysis uses intermediate datasets derived from the archival dataset, and
 may fail if the `generate_shared_intermediates.py` module has not been run.
