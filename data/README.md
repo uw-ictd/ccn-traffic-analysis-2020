@@ -17,22 +17,18 @@ project root.
 3. Move the dataset exported files to their expected locations
 
    ```
-   mv export/flows ./
-   mv export/log_gaps_TM.parquet ./
-   mv export/user_active_deltas.parquet ./
-   mv export/transactions_TM.parquet ./
+   mv export clean
    ```
 
-4. Remove the download tar.gz file and extra readme left in the export diretory
+4. Remove the download tar.gz file
     ```
-    rm -r export
     rm dataset.tar.gz
     ```
 
 4. Validate the structure of your data directory. Your data directory should look like this:
 
    ```
-   ./
+    clean
     ├── flows
     │   ├── p2p_TM_DIV_none_INDEX_start
     │   │   ├── _common_metadata

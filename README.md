@@ -15,34 +15,58 @@ may fail if the `generate_shared_intermediates.py` module has not been run.
 
 ## Running Computations
 
-Before running other modules, the `generate_shared_intermediates.py` module must be
-run to generate datasets derived from the archival data used by other modules.
-
-```shell script
-poetry run python generate_shared_intermediates.py
-```
-
 Analysis files which generate graphs or statistics from the data are located in
-the root directory of the project, and can be run individually after the shared
-intermediates have been generated.
+the root directory of the project, and can be run individually after the
+environment is setup.
 
-The project has a concept of a "platform", which allows splitting data-intensive
-computation from visualization. Create a new `platform-conf.toml` file in the
-project root directory from the `example-platform-conf.toml` to customize the
-platform behavior. This can be useful when using a different server or cloud
-resources to prepare data with a local machine to generate visualizations.
-Details of the specific entries in `platform-conf.toml` are included as comments
-in the example file.
+### Prequesites and environment setup
 
-### Dependencies
+1. Create the renders directory for final graph exports and scratch directory
+   for checkpointed work in progress.
 
-Dependencies for the project are managed with poetry, an external tool you may
-need to install. After checking out the repository, run `poetry shell` in the
-root directory to get a shell in a virtual environment. Then run `poetry install`
-to install all the dependencies from the lockfile. If this command gives you
-errors, you may need to install some supporting libraries (libsnappy) for your
-platform. You will need to be in the poetry shell or run commands with poetry
-run to actually run scripts with the appropriate dependencies.
+   ```
+   mkdir renders
+   mkdir scratch
+   ```
+
+2. Download and extract the data (see [data](#data))
+
+2. Install dependencies
+
+   Dependencies for the project are managed with poetry, an external tool you
+   may need to install. After checking out the repository, run `poetry shell` in
+   the root directory to get a shell in a virtual environment. Then run `poetry
+   install` to install all the dependencies from the lockfile. If this command
+   gives you errors, you may need to install some supporting libraries
+   (libsnappy) for your platform. You will need to be in the poetry shell or run
+   commands with poetry run to actually run scripts with the appropriate
+   dependencies.
+
+3. Create a platform file
+
+   The project has a concept of a "platform", which allows splitting
+   data-intensive computation (which you probably want to do on a server) from
+   visualization (which you might want to do on your own machine). Create a new
+   `platform-conf.toml` file in the project root directory from the
+   `example-platform-conf.toml` to customize the platform behavior. This can be
+   useful when using a different server or cloud resources to prepare data with
+   a local machine to generate visualizations.
+
+    The scripts are setup to generate intermediate reduced datasets in the
+   `./scratch` directory when extensive pre-computation is needed. This
+   directory can then be copied from the server to your local machine to run the
+   actual visualizations. Details of the specific entries in
+   `platform-conf.toml` are included as comments in the example file.
+
+4. Generate the shared intermediate files.
+
+   Before running other modules, the `generate_shared_intermediates.py` module
+   must be run to generate datasets derived from the archival data used by other
+   modules.
+
+   ```shell script
+   poetry run python generate_shared_intermediates.py
+   ```
 
 ### Dask
 The uncompressed dataset size as of March 2020 is too large to fit on
