@@ -19,6 +19,7 @@ if __name__ == "__main__":
         client = None
 
     Path("data/derived").mkdir(parents=True, exist_ok=True)
+    Path("scratch/graphs").mkdir(parents=True, exist_ok=True)
 
     intermediates.compute_first_time_user_transactions.run(client, basedir)
     intermediates.compute_log_gaps.run(client, basedir)
