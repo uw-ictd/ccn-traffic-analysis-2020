@@ -65,7 +65,7 @@ def _reduce_flow_gaps_to_pandas(typical_flows_file, p2p_flows_file, outfile, das
 
 
 def run(dask_client, basedir):
-    typical_flows_file = os.path.join(basedir, "data/clean/flows/typical_fqdn_category_local_TM_DIV_none_INDEX_start")
+    typical_flows_file = os.path.join(basedir, "data/clean/flows/typical_fqdn_org_category_local_TM_DIV_none_INDEX_start")
     p2p_flows_file = os.path.join(basedir, "data/clean/flows/p2p_TM_DIV_none_INDEX_start")
     out_file = os.path.join(basedir, "data/derived/log_gaps_TM.parquet")
     if dask_client is not None:
