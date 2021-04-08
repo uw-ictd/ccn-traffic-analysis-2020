@@ -21,15 +21,7 @@ environment is setup.
 
 ### Prequesites and environment setup
 
-1. Create the renders directory for final graph exports and scratch directory
-   for checkpointed work in progress.
-
-   ```
-   mkdir renders
-   mkdir scratch
-   ```
-
-2. Download and extract the data (see [data](#data))
+1. Download and extract the data (see [data](#data))
 
 2. Install dependencies
 
